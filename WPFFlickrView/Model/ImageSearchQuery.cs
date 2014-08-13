@@ -41,5 +41,10 @@ namespace WPFFlickrView.Model
         public List<string> Tags { get; private set; }
         public List<string> SortOrders { get; private set; }
         public bool UserOnly { get; private set; }
+
+        public override string ToString()
+        {
+            return string.Join("-", Tags) + " Sort: " + string.Join("-", SortOrders);
+        }
     }
 }

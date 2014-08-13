@@ -38,6 +38,7 @@ namespace WPFFlickrView.ViewModel
                 SimpleIoc.Default.Register<IImageService, FlickrService>();
             }
 
+            SimpleIoc.Default.Register<ICacheService, CacheService>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
 

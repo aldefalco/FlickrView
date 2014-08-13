@@ -93,7 +93,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\NullToCollapsed.cs" />
+    <Compile Include="Model\CacheService.cs" />
     <Compile Include="Model\Comment.cs" />
+    <Compile Include="Model\ICacheService.cs" />
     <Compile Include="Model\ImageSearchQuery.cs" />
     <Compile Include="Model\Image.cs" />
     <Compile Include="ViewModel\CommentViewModel.cs" />
