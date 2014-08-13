@@ -86,6 +86,12 @@ namespace WPFFlickrView.Model
                 return result;
             });
 
+            if (taskResult.HasError)
+            {
+                callback(null, taskResult.Error);
+                return;
+            }
+
             var images = (from r in taskResult.Result
                      select new Image
                          {
@@ -120,6 +126,12 @@ namespace WPFFlickrView.Model
                 return result;
             });
 
+            if (taskResult.HasError)
+            {
+                callback(null, taskResult.Error);
+                return;
+            }
+
             var comments = (from r in taskResult.Result
                      select new Comment
                      {
@@ -128,7 +140,6 @@ namespace WPFFlickrView.Model
                          UserId = r.AuthorUserId,
                          UserName = r.AuthorUserName,
                          Url = r.Permalink
-
                      });
             callback(comments, null);
         }
