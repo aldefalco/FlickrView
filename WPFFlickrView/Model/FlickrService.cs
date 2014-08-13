@@ -83,7 +83,7 @@ namespace WPFFlickrView.Model
                     Url = r.LargeUrl,
                     Thumbnail = r.ThumbnailUrl,
                   Description = r.Description + string.Join(" ", r.Tags.ToArray<string>())
-                }).Take(20);
+                });
                 callback(a, null);
             
         }

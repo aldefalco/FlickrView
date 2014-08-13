@@ -201,6 +201,68 @@ namespace WPFFlickrView.ViewModel
             }
         }
 
+        /// <summary>
+        /// The <see cref="PageSize" /> property's name.
+        /// </summary>
+        public const string PageSizePropertyName = "PageSize";
+
+        private int _pageSize = 20;
+
+        /// <summary>
+        /// Sets and gets the PageSize property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public int PageSize
+        {
+            get
+            {
+                return _pageSize;
+            }
+
+            set
+            {
+                if (_pageSize == value)
+                {
+                    return;
+                }
+
+                RaisePropertyChanging(PageSizePropertyName);
+                _pageSize = value;
+                RaisePropertyChanged(PageSizePropertyName);
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="Page" /> property's name.
+        /// </summary>
+        public const string PagePropertyName = "Page";
+
+        private int _page = 0;
+
+        /// <summary>
+        /// Sets and gets the Page property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public int Page
+        {
+            get
+            {
+                return _page;
+            }
+
+            set
+            {
+                if (_page == value)
+                {
+                    return;
+                }
+
+                RaisePropertyChanging(PagePropertyName);
+                _page = value;
+                RaisePropertyChanged(PagePropertyName);
+            }
+        }
+
         public RelayCommand Search { get; private set; }
         public RelayCommand<ImageViewModel> ChangeCurrent { get; private set; }
 
@@ -243,8 +305,8 @@ namespace WPFFlickrView.ViewModel
                             throw error;
 
                         Images = new ObservableCollection<ImageViewModel>(
-                            from i in items
-                            select new ImageViewModel (i)
+                            (from i in items
+                            select new ImageViewModel (i)).Skip(Page*PageSize).Take(PageSize)
                            );
 
                         IsReady = true;
