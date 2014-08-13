@@ -219,19 +219,14 @@ namespace WPFFlickrView.ViewModel
 
                 if (Current != null)
                 {
-                    _dataService.Comments(image.Id, (items, error) =>
+                    _dataService.Comments(image.Model.Id, (items, error) =>
                     {
                         if (error != null)
                             throw error;
 
                         Current.Comments = new ObservableCollection<CommentViewModel>(
                                 from i in items
-                                select new CommentViewModel
-                                {
-                                    Id = i.Id,
-                                    UserName = i.UserName,
-                                    Body = i.Body
-                                });
+                                select new CommentViewModel (i) );
                     });
                 }
             });
@@ -249,14 +244,8 @@ namespace WPFFlickrView.ViewModel
 
                         Images = new ObservableCollection<ImageViewModel>(
                             from i in items
-                            select new ImageViewModel
-                            {
-                                Id = i.Id,
-                                Title = i.Title,
-                                Url = i.Url,
-                                Thumbnail = i.Thumbnail,
-                                Description = i.Description
-                            });
+                            select new ImageViewModel (i)
+                           );
 
                         IsReady = true;
                     });

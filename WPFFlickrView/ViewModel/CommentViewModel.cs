@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using WPFFlickrView.Model;
 
 namespace WPFFlickrView.ViewModel
 {
@@ -10,105 +11,43 @@ namespace WPFFlickrView.ViewModel
     /// </summary>
     public class CommentViewModel : ViewModelBase
     {
-
         /// <summary>
-        /// The <see cref="Id" /> property's name.
+        /// The <see cref="Model" /> property's name.
         /// </summary>
-        public const string IdPropertyName = "Id";
+        public const string ModelPropertyName = "Model";
 
-        private string _id = "";
+        private Comment _model = null;
 
         /// <summary>
-        /// Sets and gets the Id property.
+        /// Sets and gets the Model property.
         /// Changes to that property's value raise the PropertyChanged event. 
         /// </summary>
-        public string Id
+        public Comment Model
         {
             get
             {
-                return _id;
+                return _model;
             }
 
             set
             {
-                if (_id == value)
+                if (_model == value)
                 {
                     return;
                 }
 
-                RaisePropertyChanging(IdPropertyName);
-                _id = value;
-                RaisePropertyChanged(IdPropertyName);
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="Body" /> property's name.
-        /// </summary>
-        public const string BodyPropertyName = "Body";
-
-        private string _body = "";
-
-        /// <summary>
-        /// Sets and gets the Body property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public string Body
-        {
-            get
-            {
-                return _body;
-            }
-
-            set
-            {
-                if (_body == value)
-                {
-                    return;
-                }
-
-                RaisePropertyChanging(BodyPropertyName);
-                _body = value;
-                RaisePropertyChanged(BodyPropertyName);
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="UserName" /> property's name.
-        /// </summary>
-        public const string UserNamePropertyName = "UserName";
-
-        private string _userName = "";
-
-        /// <summary>
-        /// Sets and gets the UserName property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public string UserName
-        {
-            get
-            {
-                return _userName;
-            }
-
-            set
-            {
-                if (_userName == value)
-                {
-                    return;
-                }
-
-                RaisePropertyChanging(UserNamePropertyName);
-                _userName = value;
-                RaisePropertyChanged(UserNamePropertyName);
+                RaisePropertyChanging(ModelPropertyName);
+                _model = value;
+                RaisePropertyChanged(ModelPropertyName);
             }
         }
 
         /// <summary>
         /// Initializes a new instance of the CommentViewModel class.
         /// </summary>
-        public CommentViewModel()
+        public CommentViewModel(Comment model)
         {
+            _model = model;
         }
     }
 }

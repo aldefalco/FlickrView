@@ -32,14 +32,14 @@
         <Grid.Resources>
             <DataTemplate x:Key="listDataTemplate">
                 <StackPanel Width="200" Margin="10">
-                    <Image Source="{Binding Thumbnail}" />
-                    <TextBlock Text="{Binding Title}"/>
+                    <Image Source="{Binding Model.Thumbnail}" />
+                    <TextBlock Text="{Binding Model.Title}"/>
                 </StackPanel>
             </DataTemplate>
             <DataTemplate x:Key="commentsTemplate">
                 <StackPanel>
-                    <TextBlock Text="{Binding UserName}" FontStyle="Italic" FontSize="10" />
-                    <TextBlock Text="{Binding Body}" TextWrapping="Wrap" MaxWidth="400"/>
+                    <TextBlock Text="{Binding Model.UserName}" FontStyle="Italic" FontSize="10" />
+                    <TextBlock Text="{Binding Model.Body}" TextWrapping="Wrap" MaxWidth="400"/>
                 </StackPanel>
             </DataTemplate>
         </Grid.Resources>
@@ -84,8 +84,8 @@
                 <RowDefinition />
                 <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="{Binding Current.Title}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" />
-            <Image Grid.Row="1" Grid.RowSpan="2" Source="{Binding Current.Url}" Margin="10,0"/>
+            <TextBlock Grid.Row="0" Text="{Binding Current.Model.Title}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" />
+            <Image Grid.Row="1" Grid.RowSpan="2" Source="{Binding Current.Model.Url}" Margin="10,0"/>
             <Grid Grid.Row="2" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -95,7 +95,7 @@
                     <RowDefinition />
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Column="0" Text="{Binding Current.Description}" FontStyle="Italic" Margin="10" TextWrapping="WrapWithOverflow" Background="#CCFFFFFF" Padding="10" MaxWidth="300"/>
+                <TextBlock Grid.Column="0" Text="{Binding Current.Model.Description}" FontStyle="Italic" Margin="10" TextWrapping="WrapWithOverflow" Background="#CCFFFFFF" Padding="10" MaxWidth="300"/>
                 <Grid Grid.Column="1" Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20"/>

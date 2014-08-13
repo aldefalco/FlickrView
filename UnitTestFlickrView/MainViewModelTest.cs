@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WPFFlickrView.ViewModel;
+using WPFFlickrView.Model;
 
 namespace UnitTestFlickrView
 {
@@ -16,8 +17,8 @@ namespace UnitTestFlickrView
             viewModel.TagsFilter = "T1";
             viewModel.Search.Execute(null);
 
-            Assert.AreEqual("A", viewModel.Images[0].Title);
-            Assert.AreEqual("C", viewModel.Images[1].Title);
+            Assert.AreEqual("A", viewModel.Images[0].Model.Title);
+            Assert.AreEqual("C", viewModel.Images[1].Model.Title);
         }
 
         [TestMethod]
@@ -29,8 +30,8 @@ namespace UnitTestFlickrView
             viewModel.TagsFilter = "T2";
             viewModel.Search.Execute(null);
 
-            Assert.AreEqual("B", viewModel.Images[0].Title);
-            Assert.AreEqual("C", viewModel.Images[1].Title);
+            Assert.AreEqual("B", viewModel.Images[0].Model.Title);
+            Assert.AreEqual("C", viewModel.Images[1].Model.Title);
         }
 
         [TestMethod]
@@ -39,12 +40,12 @@ namespace UnitTestFlickrView
             var s = new TestImageService();
             var viewModel = new MainViewModel(s);
 
-            var current = new ImageViewModel();
-            current.Id = "101";
+            var current = new ImageViewModel(new Image { Id = "101" });
+            
             viewModel.ChangeCurrent.Execute(current);
 
             Assert.AreEqual(current, viewModel.Current);
-            Assert.AreEqual("101", viewModel.Current.Comments[0].Id);
+            Assert.AreEqual("101", viewModel.Current.Comments[0].Model.Id);
         }
     }
 }
